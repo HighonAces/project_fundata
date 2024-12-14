@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: project-fundata
+  labels:
+    app: project-fundata
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: project-fundata
+  template:
+    metadata:
+      labels:
+        app: project-fundata
+    spec:
+      containers:
+        - name: project-fundata
+          image: your-docker-image:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          env:
+            - name: MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-secret
+                  key: mongodb-uri
+      restartPolicy: Always
