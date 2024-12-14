@@ -7,6 +7,8 @@ Currently I have subscribed to TIKR which costs me $20/month to get fundamental 
 `
 - Store the data in mongo-db which will be deployed in the same cluster
 - Use Grafana to visualize the data stored in mongo-db
+
+`
 myapp/
 ├── main.go
 ├── internal/
@@ -14,13 +16,13 @@ myapp/
 │   │   └── handler.go
 │   ├── db/
 │   │   └── mongo.go
-│   ├── models/
-│   │   └── data.go
 │   ├── services/
 │   │   └── alpha_vantage.go
-├── pkg/
-│   └── utils/
-│       └── utils.go
+├── k8s/
+│   ├── mongo_uri_secret.yaml
+│   ├── project_fundata_deploy.yaml
+│   ├── project_fundata_service.yaml
 ├── go.mod
 ├── go.sum
 └── README.md
+`
